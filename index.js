@@ -577,6 +577,8 @@ Request.prototype.start = function () {
   // auth option.  If we don't remove it, we're gonna have a bad time.
   var reqOptions = copy(self)
   delete reqOptions.auth
+  // explicitly set agent to false.
+  reqOptions.agent = false;
 
   debug('make request', self.uri.href)
   self.req = self.httpModule.request(reqOptions, self.onResponse.bind(self))
